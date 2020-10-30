@@ -1,0 +1,95 @@
+<header>
+  <h1 style="margin-top: 25px;">{{app}}</h1>
+</header>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <button ng-click="deslogarDoSistema()" class="btn btn-info btn-lg">Deslogar do sistema</button>
+  </div>
+</div>
+
+
+<div class="container" style="margin-top: 10%; margin-bottom: 10%;">
+  <div class="row justify-content-center">
+    <div class="card" style="width: 500px;"">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="usuario in users | orderBy: 'name' ">
+            <td>{{usuario.name}}</td>
+            <td>{{usuario.email}}</td>
+            <td>
+              <button ng-click="selectUser(usuario._id, usuario.name, usuario.email, usuario.password)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalEditar">Editar usuário</button>
+              <button ng-click="selectUser(usuario._id, usuario.name)" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalExcluir">Deletar usuário</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Atualizar-->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="ModalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="width: 350px;" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="margin-bottom: 15px;">
+        <h5 class="modal-title" id="ModalEditarLabel">Editar usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <form style="width: 300px; margin: auto;">
+        <div class="form-goup" style="margin-bottom: 10px;">
+          <label style="margin-bottom: 3px;">Usuário</label>
+          <input ng-model="editar.name" name="name" type="text" class="form-control" placeholder="Usuário">
+        </div>
+        <div class="form-goup" style="margin-bottom: 10px;">
+          <label style="margin-bottom: 3px;">Endereço de email</label>
+          <input ng-model="editar.email" name="email" type="text" class="form-control" placeholder="Email">
+        </div>
+        <div class="form-goup">
+          <label style="margin-bottom: 3px;">Nova senha</label>
+          <input ng-model="editar.password" name="password" type="password" class="form-control" placeholder="Senha">
+        </div>
+      </form>
+
+      <div class="modal-footer" style="margin-top: 18px;">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" ng-click="atualizaUser(editar)">Atualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Excluir Usuário-->
+<div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="ModalExcluirLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalExcluirLabel" style="color: red;">Excluir usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja excluir o usuário {{User.name}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" ng-click="deletaUser()" >Excluir usuário</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
+</body>
+
+</html>

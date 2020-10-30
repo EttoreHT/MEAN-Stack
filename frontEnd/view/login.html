@@ -1,0 +1,73 @@
+<header>
+  <h1 style="margin-top: 25px;">{{app}}</h1>
+</header>
+
+<div class="container" style="margin-top: 10%;">
+  <div class="row justify-content-center">
+    <div>
+      <div class="card" style="width: 350px;">
+        <div class="card-body">
+
+            <form>
+              <div class="form-group">
+                <label>Endereço de email</label>
+                <input ng-model="login.email" name="email" type="text" class="form-control" placeholder="Email">
+                <small class="form-text text-muted">Numca compartilhe seu email com outras pessoas</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Senha do usuário</label>
+                <input ng-model="login.password" name="password" type="password" type="password" class="form-control" placeholder="Senha">
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label" for="exampleCheck1">Lembre-me</label>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100px;" href="#/users" ng-click="loginUser()">Logar</button>
+            </form>
+
+            </br><hr/>
+
+            <div style="text-align: center;">
+              Caso ainda não tenha cadastro <a href="#" data-toggle="modal" data-target="#modalCadastro">clique aqui</a> 
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="ModalCadastroLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" style="width: 350px;" role="document">
+  <div class="modal-content">
+    <div class="modal-header" style="margin-bottom: 15px;">
+      <h5 class="modal-title" id="ModalCadastroLabel">Cadastro usuário</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+    <form style="width: 300px; margin: auto;">
+      <div class="form-goup" style="margin-bottom: 10px;">
+        <label style="margin-bottom: 3px;">Usuário</label>
+        <input ng-model="user.name" name="name" type="text" class="form-control" placeholder="Usuário">
+      </div>
+      <div class="form-goup" style="margin-bottom: 10px;">
+        <label style="margin-bottom: 3px;">Endereço de email</label>
+        <input ng-model="user.email" name="email" type="text" class="form-control" placeholder="Email">
+      </div>
+      <div class="form-goup">
+        <label style="margin-bottom: 3px;">Senha</label>
+        <input ng-model="user.password" name="password" type="password" class="form-control" placeholder="Senha">
+      </div>
+    </form>
+
+    <div class="modal-footer" style="margin-top: 18px;">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      <button class="btn btn-primary" ng-click="cadastrarUser()">Cadastrar</button>
+    </div>
+  </div>
+</div>
+</div>
